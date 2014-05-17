@@ -26,7 +26,59 @@ angular.module('myApp', ['ngMessages']);
 
 ## Documentation
 
-Documentation is available on the
+### Basics of ngMessages
+After including ngMessages in your application and attach the ngMessages module to the application module as a dependency
+```html
+<script type="text/javascript" src="angular.js"></script>
+<script type="text/javascript" src="angular-messages.js"></script>
+<script type="text/javascript">
+  angular.module('myApp', ['ngMessages']);
+</script>```
+
+Build your form with ng-messages div for each input you want to add validation to.
+
+```html
+<form name="myform">
+    <div class="field">
+      <label for="emailAddress">Enter your email address:</label>
+      <input type="email" name="emailAddress" ng-model="data.email" required />
+      <div ng-messages="myform.emailAddress.$error">
+        <div ng-message="required">
+          You forgot to enter your email address...
+        </div>
+        <div ng-message="email">
+          You did not enter your email address correctly...
+        </div>
+      </div>
+    </div>
+  <input type="submit" />
+</form>```
+
+
+###Reusing Error Messages
+
+Error messages can be reused within a ngMessages block by including a remote (or inline template) using the ng-message-include attribute.
+```html
+<!-- remote file (error-messages.html) or blick insde the page -->
+<div ng-message="required">You left the field blank...</div>
+<div ng-message="minlength">Your field is too short</div>
+<div ng-message="maxlength">Your field is too long</div>
+<div ng-message="email">Your field has an invalid email address</div>
+```
+Inside the form
+
+```html
+<form name="myform">
+    <div class="field">
+      <label for="emailAddress">Enter your email address:</label>
+      <input type="email" name="emailAddress" ng-model="data.email" required />
+       <div ng-messages="myform.emailAddress.$error"
+         ng-messages-include="error-messages.html"></div>
+    </div>
+  <input type="submit" />
+</form>```
+
+More info available on the
 [AngularJS docs site](https://docs.angularjs.org/api/ngMessages).
 
 ## License
