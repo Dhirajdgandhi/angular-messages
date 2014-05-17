@@ -28,12 +28,14 @@ angular.module('myApp', ['ngMessages']);
 
 ### Basics of ngMessages
 After including ngMessages in your application and attach the ngMessages module to the application module as a dependency
+
 ```html
 <script type="text/javascript" src="angular.js"></script>
 <script type="text/javascript" src="angular-messages.js"></script>
 <script type="text/javascript">
   angular.module('myApp', ['ngMessages']);
-</script>```
+</script>
+```
 
 Build your form with ng-messages div for each input you want to add validation to.
 
@@ -52,8 +54,8 @@ Build your form with ng-messages div for each input you want to add validation t
       </div>
     </div>
   <input type="submit" />
-</form>```
-
+</form>
+```
 
 ###Reusing Error Messages
 
@@ -72,11 +74,13 @@ Inside the form
     <div class="field">
       <label for="emailAddress">Enter your email address:</label>
       <input type="email" name="emailAddress" ng-model="data.email" required />
+      
        <div ng-messages="myform.emailAddress.$error"
          ng-messages-include="error-messages.html"></div>
     </div>
   <input type="submit" />
-</form>```
+</form>
+```
 
 More info available on the
 [AngularJS docs site](https://docs.angularjs.org/api/ngMessages).
